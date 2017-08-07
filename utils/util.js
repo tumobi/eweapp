@@ -20,19 +20,26 @@ function formatNumber(n) {
 
 
 function request(url, method = 'GET', data = {}) {
+
+  let header = {
+    'content-type': 'application/json',
+    'X-ECAPI-Sign': '',
+    'X-ECAPI-UDID': '',
+    'X-ECAPI-UserAgent': 'Platform/Wechat',
+    'X-ECAPI-Ver': '1.1.0'
+  };
+
+  let token = wx.getStorageSync('token') || '';
+  if (token) {
+    header['X-ECAPI-Authorization'] = token
+  }
+
   return new Promise(function (resolve, reject) {
     wx.request({
       url: url,
       method: method,
       data: data,
-      header: {
-        'content-type': 'application/json',
-        'X-ECAPI-Authorization': wx.getStorageSync('token') || '',
-        'X-ECAPI-Sign': '',
-        'X-ECAPI-UDID': '',
-        'X-ECAPI-UserAgent': 'Platform/Wechat',
-        'X-ECAPI-Ver': '1.1.0'
-      },
+      header: header,
       success: function (res) {
         if (res.data.error_code === 0) {
           resolve(res.data);

@@ -42,7 +42,7 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
-    util.request(util.api + 'ecapi.product.list', 'POST', {
+    util.request(util.apiUrl + 'ecapi.product.list', 'POST', {
       category: this.data.category,
       page: this.data.paged.page,
       keyword: this.data.keyword,
