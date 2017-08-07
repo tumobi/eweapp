@@ -1,0 +1,14 @@
+<!--login.wxml-->
+<view class="container">
+  <view class="login">
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <input class="input-item" bindinput="bindUsernameInput" placeholder="请输入用户名/邮箱" />
+      <input class="input-item" type="password" bindinput="bindPasswordInput" placeholder="请输入密码" />
+      <button class="btn-item" formType="submit">登录</button>
+      <view class="link-item">
+        <navigator url="url" class="l">忘记密码了？</navigator>
+        <navigator url="url" class="r">新用户注册</navigator>
+      </view>
+    </form>
+  </view>
+</view>

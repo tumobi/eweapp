@@ -1,0 +1,7 @@
+<!--cart.wxml-->
+<view class="container">
+  <view class="list-empty">
+    <image class="icon" src="/images/icon_cart_empty.png"></image>
+    <text class="msg">您的购物车没有商品</text>
+  </view>
+</view>

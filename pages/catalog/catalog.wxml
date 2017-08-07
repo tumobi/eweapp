@@ -1,0 +1,16 @@
+<view class="container">
+  <view class="search">
+    <view class="form">
+      <input class="input"  placeholder="输入商品名称" bindinput="bindKeywordInput" confirm-type="search" bindconfirm="bindKeywordConfirm"/>
+      <image class="btn" src="/images/icon_search.png" bindtap="bindSearchTap"></image>
+    </view>
+  </view>
+  <view class="catalog">
+    <view class="item" wx:for="{{categories}}" wx:key="{{item.id}}">
+      <navigator class="h" url="/pages/goods/list/list?category={{item.id}}">{{item.name}}</navigator>
+      <view class="b">
+        <navigator class="a" url="/pages/goods/list/list?category={{item.id}}" wx:for="{{item.categories}}" wx:key="{{sitem.id}}" wx:for-item="sitem">{{sitem.name}}</navigator>
+      </view>
+    </view>
+  </view>
+</view>

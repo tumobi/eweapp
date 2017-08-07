@@ -1,0 +1,73 @@
+<view class="container">
+  <swiper class="goodsimgs" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+    <swiper-item wx:for="{{gallery}}" wx:key="{{item.large}}">
+      <image src="{{item.large}}" background-size="cover"></image>
+    </swiper-item>
+  </swiper>
+  <view class="goods-info">
+    <view class="c">
+      <text class="name">{{goods.name}}</text>
+      <text class="price">￥{{goods.current_price}}</text>
+    </view>
+  </view>
+  <view class="section-nav section-attr">
+    <view class="t">请选择规格数量</view>
+    <view class="b">
+      <view class="attr-pop">
+        <view class="spec-con">
+          <view class="spec-item" wx:for="{{goods.properties}}" wx:key="{{item.id}}">
+            <view class="name">{{item.name}}</view>
+            <view class="values">
+              <view class="value {{vitem.checked ? 'selected' : ''}}" bindtap="clickSkuValue" wx:for="{{item.attrs}}" wx:for-item="vitem" wx:key="{{vitem.id}}" data-value-id="{{vitem.id}}" data-name-id="{{vitem.id}}">{{vitem.attr_name}}</view>
+            </view>
+          </view>
+          <view class="number-item">
+            <view class="name">购买数量</view>
+            <view class="selnum">
+              <view class="cut" bindtap="cutNumber">-</view>
+              <input value="{{number}}" class="number" disabled="true" type="number" />
+              <view class="add" bindtap="addNumber">+</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="goods-attr">
+    <view class="t">商品详情</view>
+    <view class="detail">
+    <import src="../../../libs/wxParse/wxParse.wxml"/>
+    <template is="wxParse" data="{{wxParseData: goodsDetail.nodes}}"/>
+    </view>
+  </view>
+
+  <view class="related-goods" wx:if="{{relatedGoods.length > 0}}">
+    <view class="h">
+      <view class="line"></view>
+      <text class="title">大家都在看</text>
+    </view>
+    <view class="b">
+      <view class="item" wx:for="{{relatedGoods}}" wx:key="{{item.id}}">
+        <navigator url="/pages/goods/goods?id={{item.id}}">
+          <image class="img" src="{{item.list_pic_url}}" background-size="cover"></image>
+          <text class="name">{{item.name}}</text>
+          <text class="price">￥{{item.retail_price}}</text>
+        </navigator>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="bottom-btn">
+  <view class="l l-collect" bindtap="closeAttrOrCollect">
+    <image class="icon" src="/images/icon_collect.png"></image>
+  </view>
+  <view class="l l-cart">
+    <view class="box">
+      <text class="cart-count">{{cartGoodsCount}}</text>
+      <image bindtap="openCartPage" class="icon" src="/images/icon_cart.png"></image>
+    </view>
+  </view>
+  <view class="c">立即购买</view>
+  <view class="r" bindtap="addToCart">加入购物车</view>
+</view>
