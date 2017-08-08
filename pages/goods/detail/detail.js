@@ -15,6 +15,9 @@ Page({
     number: 1,
   },
   getProductInfo: function () {
+    wx.showLoading({
+      title: '加载中...',
+    });
     let that = this;
     util.request(util.apiUrl + 'ecapi.product.get', 'POST', { product: that.data.id }).then(function (res) {
       if (res.error_code === 0) {
@@ -37,6 +40,7 @@ Page({
         WxParse.wxParse('goodsDetail', 'html', res.product.goods_desc, that);
         //that.getGoodsRelated();
       }
+      wx.hideLoading();
     });
 
   },
