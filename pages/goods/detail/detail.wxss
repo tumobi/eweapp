@@ -57,10 +57,10 @@
 
 .section-nav .t{
     float: left;
-    width: 600rpx;
+    width: 750rpx;
     height: 108rpx;
     line-height: 108rpx;
-    font-size: 29rpx;
+    font-size: 38.5rpx;
     color: #333;
     margin-left: 31.25rpx;
     border-bottom: 1px solid #f4f4f4;
@@ -91,6 +91,7 @@
     line-height: 104rpx;
     font-size: 38.5rpx;
     padding: 0 31.25rpx 25rpx 31.25rpx;
+    border-bottom: 1px solid #f4f4f4;
 }
 
 /* @import "../../../libs/wxParse/wxParse.wxss"; */
@@ -100,10 +101,11 @@
     width: 750rpx;
     height: auto;
     overflow: hidden;
+    padding: 30rpx;
 }
 
 .detail image{
-    max-width: 750rpx;
+    max-width: 690rpx;
     display: block;
 }
 

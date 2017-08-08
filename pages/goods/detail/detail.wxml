@@ -15,10 +15,10 @@
     <view class="b">
       <view class="attr-pop">
         <view class="spec-con">
-          <view class="spec-item" wx:for="{{goods.properties}}" wx:key="{{item.id}}">
+          <view class="spec-item" wx:for="{{specificationList}}" wx:key="{{item.id}}">
             <view class="name">{{item.name}}</view>
             <view class="values">
-              <view class="value {{vitem.checked ? 'selected' : ''}}" bindtap="clickSkuValue" wx:for="{{item.attrs}}" wx:for-item="vitem" wx:key="{{vitem.id}}" data-value-id="{{vitem.id}}" data-name-id="{{vitem.id}}">{{vitem.attr_name}}</view>
+              <view class="value {{vitem.checked ? 'selected' : ''}}" bindtap="clickSkuValue" wx:for="{{item.attrs}}" wx:for-item="vitem" wx:key="{{vitem.id}}" data-value-id="{{vitem.id}}" data-name-id="{{item.id}}">{{vitem.attr_name}}</view>
             </view>
           </view>
           <view class="number-item">
@@ -62,12 +62,12 @@
   <view class="l l-collect" bindtap="closeAttrOrCollect">
     <image class="icon" src="/images/icon_collect.png"></image>
   </view>
-  <view class="l l-cart">
+  <navigator class="l l-cart" url="/pages/shopping/cart/cart" open-type="switchTab">
     <view class="box">
       <text class="cart-count">{{cartGoodsCount}}</text>
       <image bindtap="openCartPage" class="icon" src="/images/icon_cart.png"></image>
     </view>
-  </view>
+  </navigator>
   <view class="c">立即购买</view>
   <view class="r" bindtap="addToCart">加入购物车</view>
 </view>
