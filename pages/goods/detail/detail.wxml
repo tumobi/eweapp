@@ -59,8 +59,8 @@
   </view>
 </view>
 <view class="bottom-btn">
-  <view class="l l-collect" bindtap="closeAttrOrCollect">
-    <image class="icon" src="/images/icon_collect.png"></image>
+  <view class="l l-collect" bindtap="goodsCollect">
+    <image class="icon" src="{{userHasCollect ? '/images/icon_collect_selected.png' : '/images/icon_collect.png'}}"></image>
   </view>
   <navigator class="l l-cart" url="/pages/shopping/cart/cart" open-type="switchTab">
     <view class="box">

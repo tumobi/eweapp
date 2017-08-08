@@ -31,7 +31,8 @@ Page({
           goods: res.product,
           gallery: res.product.photos,
           specificationList: specificationList,
-          productList: res.product.stock
+          productList: res.product.stock,
+          userHasCollect: res.product.is_liked
         });
         WxParse.wxParse('goodsDetail', 'html', res.product.goods_desc, that);
         //that.getGoodsRelated();
@@ -158,50 +159,16 @@ Page({
   },
   onUnload: function () {
     // 页面关闭
-
   },
-  closeAttrOrCollect: function () {
+  goodsCollect: function () {
     let that = this;
-    if (this.data.openAttr) {
-      this.setData({
-        openAttr: false,
-      });
-      if (that.data.userHasCollect == 1) {
-        that.setData({
-          'collectBackImage': that.data.hasCollectImage
-        });
-      } else {
-        that.setData({
-          'collectBackImage': that.data.noCollectImage
-        });
-      }
-    } else {
-      //添加或是取消收藏
-      util.request(api.CollectAddOrDelete, { typeId: 0, valueId: this.data.id }, "POST")
+    let collectUrl = that.data.userHasCollect === false ? 'ecapi.product.like' : 'ecapi.product.unlike';
+    util.request(util.apiUrl + collectUrl, 'POST', { product: this.data.id }, "POST")
         .then(function (res) {
-          let _res = res;
-          if (_res.errno == 0) {
-            if (_res.data.type == 'add') {
-              that.setData({
-                'collectBackImage': that.data.hasCollectImage
-              });
-            } else {
-              that.setData({
-                'collectBackImage': that.data.noCollectImage
-              });
-            }
-
-          } else {
-            wx.showToast({
-              image: '/static/images/icon_error.png',
-              title: _res.errmsg,
-              mask: true
-            });
-          }
-
+          that.setData({
+            userHasCollect: res.is_liked
+          })
         });
-    }
-
   },
   addToCart: function () {
     var that = this;
