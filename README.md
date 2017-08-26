@@ -1,8 +1,10 @@
 # eweapp
 ECShop非官方版微信小程序商城，基于3.6版本appserver接口，100%兼容原有程序，没有对原有程序代码进行过任何改动。
-如果您觉得不错，欢迎star。
+> 注意：本项目还在开发中，功能还未完善，请匆商用。
 
-实时更新地址：https://github.com/tumobi/eweapp
+# 实时更新地址
+GitHub: https://github.com/tumobi/eweapp
+如果您觉得不错，欢迎star。
 
 # 功能列表
 + [x] 首页： 轮播图、商城滚动公告、精品推荐、新品上市、销量排行
