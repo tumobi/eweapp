@@ -1,7 +1,41 @@
 <!--cart.wxml-->
 <view class="container">
-  <view class="list-empty">
+  <view class="list-empty" wx:if="{{requestLoading === false && cartGoods.length <= 0}}">
     <image class="icon" src="/images/icon_cart_empty.png"></image>
     <text class="msg">您的购物车没有商品</text>
+  </view>
+  <view class="cart-view" wx:if="{{requestLoading === false && cartGoods.length > 0}}">
+    <view class="list">
+      <view class="group-item">
+        <view class="goods">
+          <view class="item {{isEditCart ? 'edit' : ''}}" wx:for="{{cartGoods}}" wx:key="{{item.id}}">
+            <view class="checkbox {{item.checked ? 'checked' : ''}}" bindtap="checkedItem" data-item-index="{{index}}"></view>
+            <view class="cart-goods">
+              <image class="img" data-item-index="{{index}}" src="{{item.product.default_photo.thumb}}"></image>
+              <view class="info">
+                <view class="t">
+                  <text class="name">{{item.product.name}}</text>
+                  <image class="del" bindtap="onDeleteGoods" data-item-index="{{index}}" src="/images/icon_delete.png"></image>
+                </view>
+                <view class="attr">{{item.property}}</view>
+                <view class="b">
+                  <text class="price">￥{{item.price}}</text>
+                  <view class="selnum">
+                    <view class="cut" bindtap="cutNumber" data-item-index="{{index}}">-</view>
+                    <input value="{{item.amount}}" class="number" disabled="true" type="number" />
+                    <view class="add" bindtap="addNumber" data-item-index="{{index}}">+</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="cart-bottom">
+      <view class="checkbox {{checkedAllStatus ? 'checked' : ''}}" bindtap="checkedAll">全选({{cartTotal.checkedGoodsCount}})</view>
+      <view class="total">{{'￥' + cartTotal.checkedGoodsAmount}}</view>
+      <view class="checkout" bindtap="checkoutOrder" wx:if="{{!isEditCart}}">去结算</view>
+    </view>
   </view>
 </view>
