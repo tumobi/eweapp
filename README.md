@@ -28,7 +28,8 @@ GitHub: https://github.com/tumobi/eweapp
 ![商品列表](http://upload-images.jianshu.io/upload_images/3985656-549cd2c55efae115.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 # 交流反馈
-交流QQ群：490201793
+QQ 群：490201793
+公众号：nideshop
 
 # 关于商用
 由于本项目使用到ECShop 3.6 appserver接口开发，如要用于商业用途，请先取得ECShop的授权。
